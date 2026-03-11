@@ -1,0 +1,47 @@
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "mytodo-be"
+  labels:
+    app: mytodo-be
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mytodo-be
+  template:
+    metadata:
+      labels:
+        app: mytodo-be
+    spec:
+      containers:
+        - name: mytodo-be
+          image: snagurum/mytodo-be:latest
+          ports:
+            - containerPort: 8000
+            - containerPort: 8001
+          envFrom:
+            - configMapRef:
+                name: "mytodo-config"
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+          readinessProbe:
+           httpGet:
+             path: /health
+             port: 8000
+           initialDelaySeconds: 5
+           periodSeconds: 10
+          livenessProbe:
+           httpGet:
+             path: /health
+             port: 8000
+           initialDelaySeconds: 15
+           periodSeconds: 20
+

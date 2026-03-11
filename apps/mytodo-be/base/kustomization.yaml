@@ -1,0 +1,9 @@
+# apps/mytodo-be/base/kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- mytodo-be-configmap.yaml
+- mytodo-be-deployment.yaml
+- mytodo-be-service.yaml
+# - mytodo-be-namespace.yaml

@@ -1,18 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: platform
+  name: dev-mytodo
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
 
   source:
     repoURL: https://github.com/snagurum/myTodo_argocd_gitops
     targetRevision: main
-    path: platform
+    path: apps/mytodo-be/overlay/dev
 
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
