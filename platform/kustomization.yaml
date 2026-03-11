@@ -1,0 +1,3 @@
+resources:
+- redis/redis.yaml
+# - prometheus/app.yaml
