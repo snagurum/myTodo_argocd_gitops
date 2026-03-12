@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mysql
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/snagurum/myTodo_argocd_gitops
+      targetRevision: HEAD
+      ref: local-files
+    - repoURL: https://charts.bitnami.com/bitnami
+      chart: mysql
+      targetRevision: 14.0.3
+      helm:
+        valueFiles:
+          - $local-files/platform/mysql/values.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: db
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true

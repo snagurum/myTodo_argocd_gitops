@@ -1,0 +1,15 @@
+# Bitnami MySQL Values Example
+auth:
+  database: "mytodo_db"        # Sets the initial database name
+  rootPassword: "mytodo-root-password" # Sets the root password
+  username: "mytodo_user"           # Creates an additional application user
+  password: "mytodo_password"       # Password for the application user
+
+global:
+  imageRegistry: docker.io
+  security:
+    allowInsecureImages: true 
+
+image:
+  repository: bitnamilegacy/mysql
+  tag: 8.4.5-debian-12-r0

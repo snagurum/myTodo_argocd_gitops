@@ -1,3 +1,4 @@
 resources:
 - redis/redis.yaml
 - kube-prometheus/prometheus.yaml
+- mysql/mysql.yaml
