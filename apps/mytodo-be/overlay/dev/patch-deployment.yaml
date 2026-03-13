@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
       - name: mytodo-be
-        image: snagurum/mytodo-be:latest
+        image: 409447267116.dkr.ecr.ap-south-1.amazonaws.com/mytodo_ecr
