@@ -4,7 +4,7 @@ metadata:
   name: "mytodo-config"
 data:
   SECRET_KEY: mytodo_secret_key_change_in_production
-  DATABASE_URL: mysql+pymysql://root:password@mysql.db.svc.cluster.local:3306/mytodo
+  DATABASE_URL: mysql+pymysql://mytodo_user:mytodo_password@mysql.db.svc.cluster.local:3306/mytodo_db
   REDIS_URL: redis://redis.redis.svc.cluster.local:6379
   ALGORITHM: HS256
   ACCESS_TOKEN_EXPIRE_MINUTES: "30"

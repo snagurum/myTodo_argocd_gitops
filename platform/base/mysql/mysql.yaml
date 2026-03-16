@@ -14,7 +14,7 @@ spec:
       targetRevision: 14.0.3
       helm:
         valueFiles:
-          - $local-files/platform/mysql/values.yaml
+          - $local-files/platform/base/mysql/values.yaml
 
   destination:
     server: https://kubernetes.default.svc

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-prometheus-stack
+  name: redis
   namespace: argocd
 spec:
   project: default
@@ -9,21 +9,24 @@ spec:
     - repoURL: https://github.com/snagurum/myTodo_argocd_gitops
       targetRevision: HEAD
       ref: local-files
-    - repoURL: https://prometheus-community.github.io/helm-charts
-      chart: kube-prometheus-stack
-      targetRevision: 69.7.1
+    - repoURL: https://charts.bitnami.com/bitnami
+      chart: redis
+      targetRevision: 19.6.4
+    # repoURL: 'https://dandydeveloper.github.io/charts/'
+    # chart: redis-ha
+    # targetRevision: 4.35.10 
       helm:
         valueFiles:
-          - $local-files/platform/kube-prometheus/values.yaml
-      # Optional: Add custom values here just like a values.yaml file
-      # values: |
+          - $local-files/platform/base/redis/values.yaml
+
   destination:
     server: https://kubernetes.default.svc
-    namespace: monitoring
+    namespace: redis
+
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+
     syncOptions:
       - CreateNamespace=true
-      - ServerSideApply=true

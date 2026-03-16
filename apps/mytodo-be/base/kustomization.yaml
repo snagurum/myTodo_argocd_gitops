@@ -5,5 +5,6 @@ kind: Kustomization
 resources:
 - mytodo-be-configmap.yaml
 - mytodo-be-deployment.yaml
+- mytodo-be-hpa.yaml
 - mytodo-be-service.yaml
 # - mytodo-be-namespace.yaml

@@ -5,13 +5,15 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "0"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
 
   source:
     repoURL: https://github.com/snagurum/myTodo_argocd_gitops
     targetRevision: main
-    path: platform
+    path: platform/overlay/dev
 
   destination:
     server: https://kubernetes.default.svc

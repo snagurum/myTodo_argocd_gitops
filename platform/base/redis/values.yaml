@@ -1,0 +1,26 @@
+architecture: standalone
+
+replica:
+  replicaCount: 0
+
+auth:
+  enabled: false
+
+master:
+  extraEnvVars:
+    - name: ALLOW_EMPTY_PASSWORD
+      value: "yes"
+
+global:
+  imageRegistry: docker.io
+  security:
+    allowInsecureImages: true
+
+image:
+  repository: bitnamilegacy/redis
+  tag: 7.2.5-debian-12-r4
+
+sentinel:
+  enabled: false
+
+commonConfiguration: ""

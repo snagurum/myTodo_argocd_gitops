@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../base
   - mytodo-be-namespace.yaml
+  - alb-ingress.yaml
 
 patches:
   - path: patch-configmap.yaml
