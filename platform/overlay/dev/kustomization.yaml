@@ -4,3 +4,6 @@ kind: Kustomization
 resources:
   - ../../base
   
+patches:
+  - path: delete-cert-manager.yaml
+  - path: delete-ingress-nginx.yaml
