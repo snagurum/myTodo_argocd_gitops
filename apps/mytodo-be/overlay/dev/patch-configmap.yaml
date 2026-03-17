@@ -5,4 +5,4 @@ metadata:
 data:
   SECRET_KEY: "dev-secret-key-goes-here"
   CORS_ALLOWED_ORIGINS: "https://dev.snagurum.in,https://www.dev.snagurum.in"
-  DATABASE_URL: mysql+pymysql://root:password@terraform-20260316071012843200000001.ctyewewkeavv.ap-south-1.rds.amazonaws.com:3306/mytodo
+  DATABASE_URL: mysql+pymysql://mytodo_user:mytodo_password@mysql.db.svc.cluster.local:3306/mytodo_db

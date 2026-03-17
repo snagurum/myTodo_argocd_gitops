@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
       - name: mytodo-be
-        image: 409447267116.dkr.ecr.ap-south-1.amazonaws.com/mytodo_ecr
+        image: 409447267116.dkr.ecr.ap-south-1.amazonaws.com/mytodo_dev_ecr
