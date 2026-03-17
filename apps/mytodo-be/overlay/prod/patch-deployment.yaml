@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mytodo-be
+spec:
+  template:
+    spec:
+      serviceAccountName: mytodo-prod-ssm-reader
+      containers:
+      - name: mytodo-be
+        image: 409447267116.dkr.ecr.ap-south-1.amazonaws.com/mytodo_ecr
+        envFrom:
+            - secretRef:
+                name: prod-mytodo
+        volumeMounts:
+          - name: secrets-store
+            mountPath: "/mnt/secrets"
+            readOnly: true
+      volumes:
+        - name: secrets-store
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "prod-mytodo"

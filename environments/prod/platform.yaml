@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: platform
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/snagurum/myTodo_argocd_gitops
+    targetRevision: main
+    path: platform/overlay/prod
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
