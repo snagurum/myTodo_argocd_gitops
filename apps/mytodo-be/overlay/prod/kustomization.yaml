@@ -4,13 +4,11 @@ resources:
   - ../../base
   - secret-storage-provider.yaml
   - nginx-ingress.yaml
-  # - mytodo-be-namespace.yaml
-  # - nlb-ingress.yaml
+  - cluster-issuer.yaml
+  # - mytodo-be-namespace.yaml #don't create ns, its created in infrastructure code.
 
 patches:
-  # - path: patch-configmap.yaml
   - path: patch-deployment.yaml
-  # - path: delete-mysql.yaml
   - path: delete-mytodo-be-configmap.yaml
 
 

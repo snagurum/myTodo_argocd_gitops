@@ -3,7 +3,7 @@ kind: ClusterIssuer
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "0"
-  name: letsencrypt-prod
+  name: letsencrypt
 spec:
   acme:
     email: admin@snagurum.in
