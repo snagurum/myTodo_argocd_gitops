@@ -7,4 +7,6 @@ resources:
 - mytodo-be-deployment.yaml
 - mytodo-be-hpa.yaml
 - mytodo-be-service.yaml
+- mytodo-be-service-monitor.yaml
+- mytodo-be-fastapi-cm.yaml
 # - mytodo-be-namespace.yaml

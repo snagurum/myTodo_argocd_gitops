@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: loki
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/snagurum/myTodo_argocd_gitops
+      targetRevision: HEAD
+      ref: local-files
+    - repoURL: https://grafana-community.github.io/helm-charts
+      chart: loki
+      targetRevision: 18.7.6
+      helm:
+        valueFiles:
+          - $local-files/platform/base/loki/values.yaml
+      # Optional: Add custom values here just like a values.yaml file
+      # values: |
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: loki
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

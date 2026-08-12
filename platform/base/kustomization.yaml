@@ -8,3 +8,5 @@ resources:
 - metric-server/metric-server.yaml
 - cert-manager/cert-manager.yaml
 - ingress-nginx/ingress-nginx.yaml
+- loki/loki.yaml
+- alloy/alloy.yaml

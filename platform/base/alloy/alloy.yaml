@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: alloy
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/snagurum/myTodo_argocd_gitops
+      targetRevision: HEAD
+      ref: local-files
+    - repoURL:  https://grafana.github.io/helm-charts
+      chart: alloy
+      targetRevision: 1.11.1
+      helm:
+        valueFiles:
+          - $local-files/platform/base/alloy/values.yaml
+      # Optional: Add custom values here just like a values.yaml file
+      # values: |
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: loki
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
